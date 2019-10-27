@@ -1,0 +1,21 @@
+jobs:
+  include:
+    - stage: test
+      if: (branch = master AND type = push) OR (NOT type = push)
+      language: java
+      jdk: openjdk8
+      sudo: required
+      before_install:
+        - |
+          mkdir -p $HOME/.gradle &&
+          echo "
+          org.gradle.parallel=true
+          org.gradle.daemon=falseD
+      install:
+        - ./gradlew assemble
+      script:
+        - ./gradlew check build
+        - ./gradlew jacocoTestReport
+        - printf '\033[33;1mUploading coverage report\033[0m' && echo -en 'travis_fold:start:coverage\\r'
+        - bash <(curl -sL https://raw.githubusercontent.com/pleo-io/codecov-bash/master/codecov)
+        - echo -en 'travis_fold:end:coverage\\r'
