@@ -1,7 +1,7 @@
 package com.betfair.tline.algorithm
 
 import com.betfair.tline.algorithm.models.HeikinAshiCandle
-import com.betfair.tline.algorithm.models.JapaneseCandle
+import com.betfair.tline.algorithm.models.MarketPeriod
 import java.math.BigDecimal
 
 // pre-cache for performance reasons
@@ -13,9 +13,9 @@ class HeikinAshi {
 
     fun next(
         previousHaCandle: HeikinAshiCandle,
-        currentJapaneseCandle: JapaneseCandle
+        currentMarketPeriod: MarketPeriod
     ): HeikinAshiCandle {
-        val haClose = currentJapaneseCandle
+        val haClose = currentMarketPeriod
             .let { it.open + it.close + it.low + it.high }
             .divide(FOUR)
 
@@ -23,9 +23,9 @@ class HeikinAshi {
             .let { it.open + it.close }
             .divide(TWO)
 
-        val haLow = minOfThree(currentJapaneseCandle.low, haOpen, haClose)
+        val haLow = minOfThree(currentMarketPeriod.low, haOpen, haClose)
 
-        val haHigh = maxOfThree(currentJapaneseCandle.high, haOpen, haClose)
+        val haHigh = maxOfThree(currentMarketPeriod.high, haOpen, haClose)
 
         return HeikinAshiCandle(
             close = haClose,
@@ -34,13 +34,4 @@ class HeikinAshi {
             high = haHigh
         )
     }
-}
-
-// custom methods for performance reasons
-private fun maxOfThree(n1: BigDecimal, n2: BigDecimal, n3: BigDecimal): BigDecimal {
-    return n1.max(n2).max(n3)
-}
-
-private fun minOfThree(n1: BigDecimal, n2: BigDecimal, n3: BigDecimal): BigDecimal {
-    return n1.min(n2).min(n3)
 }
