@@ -35,12 +35,8 @@ class HeikinAshiCandleStreamTest {
     ).stream()
 
     private val generator = HeikinAshiCandleGenerator()
-    private val initializer = HeikinAshiCandleInitializer()
 
-    private val candleStream = HeikinAshiCandleStream(
-        generator = generator,
-        initializer = initializer
-    )
+    private val candleStream = HeikinAshiCandleStream(generator)
 
     @Test
     fun `should map the whole stream`() {

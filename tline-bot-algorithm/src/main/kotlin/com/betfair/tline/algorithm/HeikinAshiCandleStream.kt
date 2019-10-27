@@ -11,7 +11,6 @@ import kotlin.streams.asSequence
 private val logger = KotlinLogging.logger {}
 
 class HeikinAshiCandleStream @Inject constructor(
-    private val initializer: HeikinAshiCandleInitializer,
     private val generator: HeikinAshiCandleGenerator
 ) {
 
@@ -20,7 +19,7 @@ class HeikinAshiCandleStream @Inject constructor(
 
         return try {
             stream.asSequence().let { seq ->
-                var currentCandle = initializer.initiateCandle(seq)
+                var currentCandle = generator.firstCandle(seq.first())
 
                 seq.map {
                     currentCandle = generator.nextCandle(currentCandle, it)
