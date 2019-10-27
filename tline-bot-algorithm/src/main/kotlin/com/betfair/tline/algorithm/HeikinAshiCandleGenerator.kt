@@ -9,9 +9,9 @@ private val FOUR = BigDecimal(4L)
 private val TWO = BigDecimal(2L)
 
 // https://docs.trendmaster.io/essential-knowledge/heikin-ashi#construction
-class HeikinAshi {
+class HeikinAshiCandleGenerator {
 
-    fun next(
+    fun nextCandle(
         previousHaCandle: HeikinAshiCandle,
         currentMarketPeriod: MarketPeriod
     ): HeikinAshiCandle {
