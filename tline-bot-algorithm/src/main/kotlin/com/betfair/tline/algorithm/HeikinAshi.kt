@@ -1,7 +1,7 @@
 package com.betfair.tline.algorithm
 
 import com.betfair.tline.algorithm.models.HeikinAshiCandle
-import com.betfair.tline.algorithm.models.MarketPeriod
+import com.betfair.tline.models.MarketPeriod
 import java.math.BigDecimal
 
 // pre-cache for performance reasons

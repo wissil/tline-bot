@@ -1,4 +1,4 @@
-package com.betfair.tline.algorithm.models
+package com.betfair.tline.models
 
 import java.math.BigDecimal
 
