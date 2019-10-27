@@ -5,6 +5,14 @@ jobs:
       language: java
       jdk: openjdk8
       sudo: required
+      before_install:
+        - |
+          mkdir -p $HOME/.gradle &&
+          echo "
+          org.gradle.parallel=true
+          org.gradle.daemon=false
+          mavenUser=${GRADLE_USER}
+          mavenPassword=${GRADLE_PASSWORD}" >> ~/.gradle/gradle.properties
       install:
         - ./gradlew assemble
       script:
