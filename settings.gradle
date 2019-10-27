@@ -2,3 +2,4 @@ rootProject.name = 'tline-bot'
 
 include ':tline-bot-algorithm'
 include ':tline-bot-api'
+include ':tline-bot-models'
