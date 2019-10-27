@@ -4,6 +4,10 @@ import com.betfair.tline.algorithm.models.HeikinAshiCandle
 import com.betfair.tline.algorithm.models.JapaneseCandle
 import java.math.BigDecimal
 
+// pre-cache for performance reasons
+private val FOUR = BigDecimal(4L)
+private val TWO = BigDecimal(2L)
+
 // https://docs.trendmaster.io/essential-knowledge/heikin-ashi#construction
 class HeikinAshi {
 
@@ -13,11 +17,11 @@ class HeikinAshi {
     ): HeikinAshiCandle {
         val haClose = currentJapaneseCandle
             .let { it.open + it.close + it.low + it.high }
-            .divide(BigDecimal.valueOf(4L))
+            .divide(FOUR)
 
         val haOpen = previousHaCandle
             .let { it.open + it.close }
-            .divide(BigDecimal.valueOf(2L))
+            .divide(TWO)
 
         val haLow = minOfThree(currentJapaneseCandle.low, haOpen, haClose)
 
