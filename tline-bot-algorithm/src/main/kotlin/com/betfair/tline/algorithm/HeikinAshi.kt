@@ -37,7 +37,6 @@ private fun maxOfThree(n1: BigDecimal, n2: BigDecimal, n3: BigDecimal): BigDecim
     return n1.max(n2).max(n3)
 }
 
-private fun minOfThree(n1: BigDecimal, n2: BigDecimal, n3: BigDecimal
-): BigDecimal {
+private fun minOfThree(n1: BigDecimal, n2: BigDecimal, n3: BigDecimal): BigDecimal {
     return n1.min(n2).min(n3)
 }
