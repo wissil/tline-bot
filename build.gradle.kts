@@ -10,9 +10,6 @@ plugins {
     `maven-publish`
 }
 
-val mavenUser: String by project
-val mavenPassword: String by project
-
 allprojects {
     group = "com.betfair.tline"
     version = "1.0.0"
