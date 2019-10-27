@@ -26,6 +26,7 @@ hs_err_pid*
 
 application.properties
 !**/test/resources/application.properties
+!**/gradle/wrapper/gradle-wrapper.jar
 .gradle/
 build/
 out/

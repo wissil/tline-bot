@@ -10,7 +10,9 @@ jobs:
           mkdir -p $HOME/.gradle &&
           echo "
           org.gradle.parallel=true
-          org.gradle.daemon=falseD
+          org.gradle.daemon=false
+          mavenUser=${GRADLE_USER}
+          mavenPassword=${GRADLE_PASSWORD}" >> ~/.gradle/gradle.properties
       install:
         - ./gradlew assemble
       script:
