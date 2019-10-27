@@ -1,8 +1,8 @@
-package com.betfair.tline.algorithm.heikinashi.models
+package com.betfair.tline.algorithm.models
 
 import java.math.BigDecimal
 
-data class HeikinAshiCandle(
+data class JapaneseCandle(
     val open: BigDecimal,
     val close: BigDecimal,
     val high: BigDecimal,
