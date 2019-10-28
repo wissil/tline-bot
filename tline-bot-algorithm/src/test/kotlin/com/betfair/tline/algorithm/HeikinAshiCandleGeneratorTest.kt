@@ -20,13 +20,13 @@ private val currentMarketPeriod = MarketPeriod(
     low = BigDecimal.valueOf(2.8)
 )
 
-class HeikinAshiTest {
+class HeikinAshiCandleGeneratorTest {
 
-    private val heikinAshi = HeikinAshi()
+    private val heikinAshi = HeikinAshiCandleGenerator()
 
     @Test
     fun `can generate a new heikin ashi candle`() {
-        val newCandle = heikinAshi.next(previousHeikinAshiCandle, currentMarketPeriod)
+        val newCandle = heikinAshi.nextCandle(previousHeikinAshiCandle, currentMarketPeriod)
 
         assertThat(newCandle.open).isEqualTo(BigDecimal.valueOf(3.75))
         assertThat(newCandle.close).isEqualTo(BigDecimal.valueOf(5.375))

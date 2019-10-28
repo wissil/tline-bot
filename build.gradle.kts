@@ -49,6 +49,7 @@ subprojects {
         "implementation"(kotlin("stdlib-jdk8"))
         "implementation"("io.github.microutils:kotlin-logging:1.6.26")
 
+        "implementation"("com.google.inject:guice:4.2.2")
         "implementation"("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1")
 
         "testImplementation"("org.jetbrains.kotlin:kotlin-test-junit:${Shared.KOTLIN_VERSION}")
